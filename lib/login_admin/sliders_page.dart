@@ -48,7 +48,7 @@ class _IntroScreenState extends State<IntroScreen> {
         TextStyle(color: Colors.white, fontSize: 20.0, fontStyle: FontStyle.italic, fontFamily: 'Raleway'),
         marginDescription: EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 70.0),
         centerWidget: Text("Slide to go next screen", style: TextStyle(color: Colors.white)),
-        backgroundImage: 'assets/images/huevos.gif',
+        backgroundImage: 'assets/images/burger.png',
         onCenterItemPress: () {},
       ),
     );

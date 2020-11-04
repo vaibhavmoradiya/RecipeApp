@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import '../Dishes/gujratiDish.dart';
+import '../Dishes/punjabiDish.dart';
+import '../Dishes/chaineseDish.dart';
+import '../Dishes/southIndianDish.dart';
 
 
 
@@ -12,6 +16,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+ 
   @override
   void initState() {
     super.initState();
@@ -21,78 +26,178 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: AppBar(
-        title: Text('Simple Card view'),
-      ),
-      body: new ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemBuilder: (context, i) {
-          return Container(
-            height: 130,
-            child: Card(
-//                color: Colors.blue,
-              elevation: 10,
-              child: Row(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: GestureDetector(
-                      onTap: () {
-
-                      },
-                      child: Container(
-                        width: 100.0,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                            color: Colors.red,
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/burger.png'),
-                                fit: BoxFit.cover),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(75.0)),
-                            boxShadow: [
-                              BoxShadow(blurRadius: 7.0, color: Colors.black)
-                            ]),
-                      ),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      return showDialog<void>(
-                        context: context,
-                        barrierDismissible: false,
-                        builder: (BuildContext conext) {
-                          return AlertDialog(
-                            title: Text('Not in stock'),
-                            content:
-                            const Text('This item is no longer available'),
-                            actions: <Widget>[
-                              FlatButton(
-                                child: Text('Ok'),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                        padding: EdgeInsets.all(30.0),
-                        child: Chip(
-                          label: Text('@anonymous'),
-                          shadowColor: Colors.blue,
-                          backgroundColor: Colors.green,
-                          elevation: 10,
-                          autofocus: true,
-                        )),
-                  ),
-                ],
+     // appBar: AppBar(
+      
+      //),
+      body: ListView(
+          padding: const EdgeInsets.all(8),
+          children: <Widget>[
+                Container(  
+                  width: 300,  
+                  height: 200,  
+                  padding: new EdgeInsets.all(10.0),  
+                  child: Card(  
+                    shape: RoundedRectangleBorder(  
+                      borderRadius: BorderRadius.circular(15.0),  
+                    ),  
+                    color: Colors.lightGreenAccent,  
+                    elevation: 10,  
+                    child: Column(  
+                      mainAxisSize: MainAxisSize.min,  
+                      children: <Widget>[  
+                        const ListTile(  
+                          leading: Icon(Icons.fastfood, size: 60),  
+                          title: Text(  
+                            'Gujarati Dishes',  
+                            style: TextStyle(fontSize: 30.0)  
+          
+                          ),   
+                        ),  
+                        ButtonBar(  
+                          children: <Widget>[  
+                            RaisedButton(  
+                              child: const Text('View'),  
+                              onPressed: () {
+                                 Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => GujaratiDish()),
+                                  );
+                              },  
+                            ),  
+                          
+                          ],  
+                        ),  
+                      ],  
+                    ),  
               ),
+                
             ),
-          );
-        },
+
+            Container(  
+                  width: 300,  
+                  height: 200,  
+                  padding: new EdgeInsets.all(10.0),  
+                  child: Card(  
+                    shape: RoundedRectangleBorder(  
+                      borderRadius: BorderRadius.circular(15.0),  
+                    ),  
+                    color: Colors.orangeAccent,  
+                    elevation: 10,  
+                    child: Column(  
+                      mainAxisSize: MainAxisSize.min,  
+                      children: <Widget>[  
+                        const ListTile(  
+                          leading: Icon(Icons.fastfood, size: 60),  
+                          title: Text(  
+                            'Punjabi Dishes',  
+                            style: TextStyle(fontSize: 30.0)  
+          
+                          ),   
+                        ),  
+                        ButtonBar(  
+                          children: <Widget>[  
+                            RaisedButton(  
+                              child: const Text('View'),  
+                              onPressed: () {
+                                 Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => PunjabiDish()),
+                                  );
+                              },  
+                            ),  
+                          
+                          ],  
+                        ),  
+                      ],  
+                    ),  
+              ),
+                
+            ), 
+
+
+Container(  
+                  width: 300,  
+                  height: 200,  
+                  padding: new EdgeInsets.all(10.0),  
+                  child: Card(  
+                    shape: RoundedRectangleBorder(  
+                      borderRadius: BorderRadius.circular(15.0),  
+                    ),  
+                    color: Colors.tealAccent,  
+                    elevation: 10,  
+                    child: Column(  
+                      mainAxisSize: MainAxisSize.min,  
+                      children: <Widget>[  
+                        const ListTile(  
+                          leading: Icon(Icons.fastfood, size: 60),  
+                          title: Text(  
+                            'Southindian Dishes',  
+                            style: TextStyle(fontSize: 30.0)  
+          
+                          ),   
+                        ),  
+                        ButtonBar(  
+                          children: <Widget>[  
+                            RaisedButton(  
+                              child: const Text('View'),  
+                              onPressed: () { 
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => SouthIndianDish()),
+                                  );
+                                  },  
+                            ),  
+                          
+                          ],  
+                        ),  
+                      ],  
+                    ),  
+              ),
+                
+            ),
+            Container(  
+                  width: 300,  
+                  height: 200,  
+                  padding: new EdgeInsets.all(10.0),  
+                  child: Card(  
+                    shape: RoundedRectangleBorder(  
+                      borderRadius: BorderRadius.circular(15.0),  
+                    ),  
+                    color: Colors.greenAccent,  
+                    elevation: 10,  
+                    child: Column(  
+                      mainAxisSize: MainAxisSize.min,  
+                      children: <Widget>[  
+                        const ListTile(  
+                          leading: Icon(Icons.fastfood, size: 60),  
+                          title: Text(  
+                            'Chainese Dishes',  
+                            style: TextStyle(fontSize: 30.0)  
+          
+                          ),   
+                        ),  
+                        ButtonBar(  
+                          children: <Widget>[  
+                            RaisedButton(  
+                              child: const Text('View'),  
+                              onPressed: () {
+                                 Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => ChaineseDish()),
+                                  );
+                              },  
+                            ),  
+                          
+                          ],  
+                        ),  
+                      ],  
+                    ),  
+              ),
+                
+            ) 
+
+
+          ],
       ),
     );
   }

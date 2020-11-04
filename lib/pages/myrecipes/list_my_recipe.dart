@@ -6,6 +6,7 @@ import 'package:recipe_app/model/recipe_model.dart';
 import 'package:recipe_app/pages/myrecipes/add_my_recipe.dart';
 import 'package:recipe_app/pages/myrecipes/edit_my_recipe.dart';
 import 'package:recipe_app/pages/myrecipes/view_my_recipe.dart';
+import 'package:share/share.dart';
 
 
 class CommonThings {
@@ -162,6 +163,14 @@ class _ListMyRecipeState extends State<ListMyRecipe> {
                         ),
                         IconButton(
                           icon: Icon(
+                            Icons.share
+                          ),
+                           onPressed: (){
+                            share(context,document['name'].toString(),document['recipe'].toString());
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon(
                             Icons.remove_red_eye,
                             color: Colors.blueAccent,
                           ),
@@ -203,4 +212,11 @@ class _ListMyRecipeState extends State<ListMyRecipe> {
       ),
     );
   }
+  share(BuildContext context, String s, String s1) {
+  final RenderBox box = context.findRenderObject();
+
+  Share.share("${s} - ${s1}",
+      subject: s1,
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+}
 }

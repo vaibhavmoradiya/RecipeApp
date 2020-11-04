@@ -6,6 +6,7 @@ import 'package:recipe_app/model/recipe_model.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share/share.dart';
 
 
 //create stf with the name ViewRecipe
@@ -187,8 +188,15 @@ class _ViewRecipeState extends State<ViewRecipe> {
                     value.isEmpty ? 'The Name field is empty' : null,
                     onSaved: (value) => _recipe = value.trim(),
                   ),
+                  IconButton(
+                          icon: Icon(
+                            Icons.share
+                          ),
+                          onPressed: (){
+                            share(context,_name,_recipe);
+                          },),
                   Padding(
-                    padding: EdgeInsets.only(top: 50),
+                    padding: EdgeInsets.only(top: 5),
                   )
                 ],
               ),
@@ -197,4 +205,11 @@ class _ViewRecipeState extends State<ViewRecipe> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
+  share(BuildContext context, String s, String s1) {
+  final RenderBox box = context.findRenderObject();
+
+  Share.share("${s} - ${s1}",
+      subject: s1,
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+}
 }

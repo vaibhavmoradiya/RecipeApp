@@ -79,7 +79,7 @@ class _FoodTopState extends State<FoodTop> {
                                   children: <Widget>[
                                     ClipRRect(
                                       borderRadius:
-                                      BorderRadius.circular(10),
+                                      BorderRadius.circular(15),
                                       child: FadeInImage(
                                         fit: BoxFit.cover,
                                         width: 65,

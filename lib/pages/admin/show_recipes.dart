@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:recipe_app/auth/auth.dart';
 import 'package:recipe_app/model/recipe_model.dart';
 import 'package:recipe_app/pages/admin/add_recipe.dart';
 import 'package:recipe_app/pages/admin/edit_recipe.dart';
 import 'package:recipe_app/pages/admin/view_recipe.dart';
+
 
 
 
@@ -34,6 +36,8 @@ class _InicioPageState extends State<InicioPage> {
 
   String userID;
   //Widget content;
+  
+  
 
   @override
   void initState() {
@@ -156,12 +160,31 @@ class _InicioPageState extends State<InicioPage> {
                             });
                           }, //funciona
                         ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.share
+                          ),
+                          onPressed: (){
+                            share(context,document['name'].toString(),document['recipe'].toString());
+                          },
+                        //  Recipe recipe = Recipe(
+                        //       name: document['name'].toString(),
+                        //       image: document['image'].toString(),
+                        //       recipe: document['recipe'].toString(),
+                        //     );
+                            // List<Alligator> alligators = [
+                            //       Alligator(name: document['name'].toString(), description: document['recipe'].toString()),
+                            // ];
+                            // share(context,)
+                          
+                        ),
 
                         IconButton(
                           icon: Icon(
                             Icons.remove_red_eye,
                             color: Colors.blueAccent,
                           ),
+
                           //Visualizar la receta,
                           onPressed: () {
                             Recipe recipe = Recipe(
@@ -200,4 +223,11 @@ class _InicioPageState extends State<InicioPage> {
       ),
     );
   }
+share(BuildContext context, String s, String s1) {
+  final RenderBox box = context.findRenderObject();
+
+  Share.share("${s} - ${s1}",
+      subject: s1,
+      sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size);
+}
 }
